@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  #bir kullanıcının birden fazla tweeti olabilir
+  has_many :tweets
   #email ve username alanlarının boş olmamasını ve benzersiz olması gerektiğini belirttik.
   validates :email, :username, presence: true, uniquenness: true 
 
