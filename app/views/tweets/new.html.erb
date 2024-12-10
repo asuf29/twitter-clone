@@ -1,0 +1,22 @@
+<div class="w-full">
+  <h1 class="text-3xl text-blue-600 font-bold">New Tweet</h1>
+  <%= form_with model: @tweet do |form| %>
+    <div>
+      <% @tweet.errors.full_messages.each do |message| %>
+        <p class="text-red-600"><%= message %></p>
+      <% end %>
+    </div>
+
+    <div>
+      <%= form.label :user, class: "block text-md text-blue-600" %>
+      <%= form.select :user_id, User.all.map { |user| [user.username, user.id] }, {}, class: "w-full border border-blue-600 rounded-xl p-2 w-full" %>
+    </div>
+
+    <div class="mt-4 w-full">
+      <%= form.label :body, class: "block text-md text-blue-600" %>
+      <%= form.text_area :body, class: "w-full h-32 border border-blue-600 rounded-xl p-2" %>
+    </div>
+
+    <%= form.submit "Save", class: "px-4 py-2 bg-blue-600 text-white text-md rounded-xl" %>
+  <% end %>
+</div> 
