@@ -1,0 +1,9 @@
+ <li class="p-4 bg-white rounded-lg shadow-md">
+    <div class="flex justify-between items-center mb-2">
+        <%= link_to tweet.user.username, new_tweet_path, class: "font-bold text-lg" %>
+        <small class="text-gray-500 text-sm">
+            <%= tweet.created_at.strftime("%b %d, %Y") %>
+        </small>
+    </div>
+    <p class="text-gray-800"><%= tweet.body %></p>
+</li>
