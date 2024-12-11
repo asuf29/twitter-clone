@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   #tweets controllerını tanımladık
   resources :tweets do
-    resources :comments
+    resources :comments, controller: "tweets/comments"
   end
   resources :users 
 
