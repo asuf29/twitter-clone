@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   #tweets controllerını tanımladık
   resources :tweets
+  resources :users
 end

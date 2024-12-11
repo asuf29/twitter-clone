@@ -22,15 +22,12 @@ class TweetsController < ApplicationController
   end
   #tweet düzenleme sayfası
   def edit
-
   end
   #tweet güncelleme işlemi
   def update
-
   end
   #tweet silme işlemi
   def destroy
-
   end
 
   private
