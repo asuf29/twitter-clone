@@ -1,0 +1,9 @@
+    <%= form_with model: [tweet, Comment.new] do |form| %>
+      <div>
+        <%= form.select :user_id, User.all.collect {|user| [user.username, user.id]} %>
+      </div>
+      <div>
+          <%= form.text_area :body %>
+      </div>
+      <%= form.submit "Send" %>
+    <% end %>

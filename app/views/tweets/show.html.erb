@@ -1,24 +1,18 @@
 <div class="flex flex-col w-full justify-center items-center">
-    <div class="mt-4 space-y-4 bg-gray-100 rounded-lg shadow-md p-4 w-80">
-        <h1 class="font-bold"><%= @tweet.user.username %></h1>
-        <h1><%= @tweet.body %></h1>
-    </div>
-    <div class="mt-4 mb-4 w-80">
-        <h2 class="text-base font-bold">Comments</h2>
-        <%= form_with model: [@tweet, Comment.new] do |form| %>
-            <div>
-                # kullanıcı seçtir. new html erb de
-                <%= form.text_area :body %>
-            </div>
-            <%= form.submit "Send" %>
-        <% end %>
-        <ul class="space-y-4">
-            <% @comments.each do |comment| %>
-                <%= render "comment", comment: comment %>
-            <% end %>
-            <% if @comments.empty? %>
-                <p class="text-gray-500 mt-4">No comments yet. Be the first to comment!</p>
-            <% end %>
-        </ul>
-    </div>
+  <div class="mt-4 space-y-4 bg-gray-100 rounded-lg shadow-md p-4 w-80">
+    <h1 class="font-bold"><%= @tweet.user.username %></h1>
+    <h1><%= @tweet.body %></h1>
+  </div>
+  <div class="mt-4 mb-4 w-80">
+    <h2 class="text-base font-bold">Comments</h2>
+    <%= render "comment_form", tweet: @tweet %>
+    <ul class="space-y-4">
+      <% @comments.each do |comment| %>
+          <%= render "comment", comment: comment %>
+      <% end %>
+      <% if @comments.empty? %>
+          <p class="text-gray-500 mt-4">No comments yet. Be the first to comment!</p>
+      <% end %>
+    </ul>
+  </div>
 </div>
