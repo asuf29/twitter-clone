@@ -6,6 +6,7 @@ class TweetsController < ApplicationController
   #tweet detay sayfası
   def show
     @tweet = Tweet.find(params[:id])
+    @comments = @tweet.comments 
   end
   #yeni tweet oluşturma sayfası
   def new
