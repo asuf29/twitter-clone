@@ -8,10 +8,10 @@
     <p class="text-gray-800">
         <%= link_to tweet.body, tweet_path(tweet) %>
     </p>
+
+    <div class="flex justify-end mt-2">
+        <%= link_to tweet_path(tweet) do %>
+            <%= image_tag("comments-icon.svg", class: "h-6 w-6") %>
+        <% end %>
+    </div>
 </li>
-
-<%# <div class="p-4 bg-white rounded-lg shadow-md">
-    <%= link_to tweet.user.comments,  tweet_comments_path %>
-
-    <%# <% end %>
-<%# </div> %> 
