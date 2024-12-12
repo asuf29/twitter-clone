@@ -1,9 +1,9 @@
     <%= form_with model: [tweet, Comment.new] do |form| %>
-      <div>
-        <%= form.select :user_id, User.all.collect {|user| [user.username, user.id]} %>
+      <div class="flex justify-center items-center w-full px-2 py-2 focus:outline-none focus:ring focus:ring-blue-200 mb-2">
+        <%= form.select :user_id, User.all.collect {|user| [user.username, user.id]}, {}, class: "w-full rounded-lg border border-gray-300" %>
       </div>
-      <div>
-          <%= form.text_area :body %>
+      <div class="flex justify-center items-center w-full px-2 py-2 focus:outline-none focus:ring focus:ring-yellow-200 mb-2">
+          <%= form.text_area :body, class: "w-full rounded-lg border border-gray-300"  %>
       </div>
-      <%= form.submit "Send" %>
+      <%= form.submit "Send", class: "w-full bg-blue-600 text-white font-semibold py-2 px-2 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-200 mb-2" %>
     <% end %>
