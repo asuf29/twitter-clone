@@ -8,5 +8,8 @@
       } do %>
         <%= image_tag("trash-icon.svg", class: "h-5 w-5 mr-2")%>
       <% end %>
+      <%= link_to edit_tweet_comment_path(comment) do %>
+        <%= image_tag("edit-icon.svg", class: "h-5 w-5 mr-2")%>
+      <% end %>
     </div>
 </li>
