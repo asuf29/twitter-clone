@@ -27,7 +27,6 @@ class TweetsController < ApplicationController
   end
   #tweet güncelleme işlemi
   def update
-    p "buradayız"
     @tweet = Tweet.find(params[:id])
 
     if @tweet.update(tweet_params)
