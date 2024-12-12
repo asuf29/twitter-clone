@@ -37,6 +37,9 @@ class TweetsController < ApplicationController
   end
   #tweet silme işlemi
   def destroy
+    @tweet = Tweet.find(params[:id])
+    @tweet.destroy
+    redirect_to root_path(@tweet), status: :see_other
   end
 
   private
