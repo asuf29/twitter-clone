@@ -1,11 +1,11 @@
 class TweetsController < ApplicationController
+  before_action :set_tweet, only: [:show, :edit, :update, :destroy]
   #tweetleri listeler
   def index
     @tweets = Tweet.all
   end
   #tweet detay sayfası
   def show
-    @tweet = Tweet.find(params[:id])
     @comments = @tweet.comments 
   end
   #yeni tweet oluşturma sayfası
@@ -23,12 +23,9 @@ class TweetsController < ApplicationController
   end
   #tweet düzenleme sayfası
   def edit
-    @tweet = Tweet.find(params[:id])
   end
   #tweet güncelleme işlemi
   def update
-    @tweet = Tweet.find(params[:id])
-
     if @tweet.update(tweet_params)
       redirect_to @tweet
     else 
@@ -37,7 +34,6 @@ class TweetsController < ApplicationController
   end
   #tweet silme işlemi
   def destroy
-    @tweet = Tweet.find(params[:id])
     @tweet.destroy
     redirect_to root_path(@tweet), status: :see_other
   end
@@ -45,5 +41,9 @@ class TweetsController < ApplicationController
   private
   def tweet_params
     params.require(:tweet).permit(:body, :user_id)
+  end
+  
+  def set_tweet
+    @tweet = Tweet.find(params[:id])
   end
 end
