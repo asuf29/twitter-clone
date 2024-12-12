@@ -27,6 +27,14 @@ class TweetsController < ApplicationController
   end
   #tweet güncelleme işlemi
   def update
+    p "buradayız"
+    @tweet = Tweet.find(params[:id])
+
+    if @tweet.update(tweet_params)
+      redirect_to @tweet
+    else 
+      render :edit, status: :unprocessable_entity
+    end
   end
   #tweet silme işlemi
   def destroy
