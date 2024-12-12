@@ -11,6 +11,9 @@
         <% @comments.each do |comment| %>
           <%= render "comment", comment: comment%>
         <% end %>
+        <% if @comments.empty? %>
+          <p class="text-gray-500 mt-4">No comments yet. Be the first to comment!</p>
+        <% end %>
       </ul>
     </div>
   </div>
