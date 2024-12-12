@@ -23,6 +23,7 @@ class TweetsController < ApplicationController
   end
   #tweet düzenleme sayfası
   def edit
+    @tweet = Tweet.find(params[:id])
   end
   #tweet güncelleme işlemi
   def update
