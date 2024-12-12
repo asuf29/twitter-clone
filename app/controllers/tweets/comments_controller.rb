@@ -1,5 +1,6 @@
 class Tweets::CommentsController < ApplicationController
-  before_action :set_tweet, only: [:create, :edit, :update, :destroy]
+  before_action :set_tweet
+  before_action :set_comment, only: [:edit, :update, :destroy]
   
   def create
     comment = @tweet.comments.new(comment_params)
@@ -9,12 +10,9 @@ class Tweets::CommentsController < ApplicationController
   end
 
   def edit
-    @comment = @tweet.comments.find(params[:id])
   end
 
   def update
-    @comment = @tweet.comments.find(params[:id])
-
     if @comment.update(comment_params)
       redirect_to tweet_path(@tweet)
     else
@@ -23,7 +21,6 @@ class Tweets::CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
     @comment.destroy
     redirect_to tweet_path(@tweet), status: :see_other
   end
@@ -35,5 +32,9 @@ class Tweets::CommentsController < ApplicationController
 
   def set_tweet 
     @tweet = Tweet.find(params[:tweet_id])
+  end
+
+  def set_comment
+    @comment = @tweet.comments.find(params[:id])
   end
 end
