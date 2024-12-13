@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :tweets do
     resources :comments, controller: "tweets/comments"
   end
-  resources :users 
+  resources :users do
+    resources :tweets, controller: "users/tweets"
+  end
 
 end
