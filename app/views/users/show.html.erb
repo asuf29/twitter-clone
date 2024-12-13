@@ -11,10 +11,7 @@
       <h2 class="text-lg font-semibold text-gray-800 mb-4">Tweets by <%= @user.username %></h2>
       <ul class="space-y-4">
         <% @tweets.each do |tweet| %>
-          <li class="border-b border-gray-200 pb-4">
-            <p class="text-gray-700"><%= tweet.body %></p>
-            <p class="text-sm text-gray-500 mt-2">Posted at: <%= tweet.created_at.strftime("%d %b %Y, %H:%M") %></p>
-          </li>
+          <%= render "tweet", tweet: tweet %>
         <% end %>
       </ul>
       <% if @tweets.empty? %>
