@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :comments
   #email ve username alanlarının boş olmamasını ve benzersiz olması gerektiğini belirttik.
   validates :email, :username, presence: true, uniqueness: true 
+  #her kullanıcının bir avatarı olmalı
+  has_one_attached :avatar
 
   #first_name ve last_name alanlarının boş olmaması gerektiğini belirttik.
   validates :first_name, :last_name, presence: true
