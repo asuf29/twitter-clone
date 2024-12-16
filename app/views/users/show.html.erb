@@ -12,7 +12,8 @@
         <% else %>
           <p>No profile picture available.</p>
         <% end %>
-        <h1 class="text-2xl font-bold text-gray-800"><%= @user.username %></h1>
+        <h1 class="text-xl font-bold text-gray-800"><%= "#{@user.first_name} #{@user.last_name}"%></h1>
+        <h1 class="text-sm text-gray-400"><%= @user.username %></h1>
       </div>
     </div>
     <div class="w-full bg-white rounded-lg shadow-md p-4">
