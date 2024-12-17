@@ -3,15 +3,19 @@
     <% @users.each do |user| %>
       <li class="flex items-center bg-gray-50 border border-gray-300 rounded-lg p-4 shadow-md">
         <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
-          <% if user.profile_picture.attached? %>
-            <%= image_tag user.profile_picture %>
-          <% else %>
-            <p class="text-xs items-center text-center text-gray-500 mt-2">No profile picture available.</p>
+          <%= link_to user_path(user) do %>
+             <% if user.profile_picture.attached? %>
+                <%= image_tag user.profile_picture %>
+              <% else %>
+                <p class="text-xs items-center text-center text-gray-500 mt-2">No profile picture available.</p>
+              <% end %>
           <% end %>
         </div>
         <div class="flex flex-col">
-          <h2 class="text-xl font-bold text-gray-800"><%= "#{user.first_name} #{user.last_name}"%></h2>
-          <p class="text-sm text-gray-400"><%= user.username %></p>
+          <%= link_to user_path(user) do %>
+            <h2 class="text-xl font-bold text-gray-800"><%= "#{user.first_name} #{user.last_name}"%></h2>
+            <p class="text-sm text-gray-400"><%= user.username %></p>
+          <% end %>
         </div>
       </li>
     <% end %>
