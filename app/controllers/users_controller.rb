@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
-  def index 
-    @users = User.all 
+  def index
+    if params[:query].present? #.present ile kullanıcının bir arama sorgusu gönderip göndermediğini kontrol eder.
+      query = "%#{params[:query]}%" #istekte gönderilen parametreleri alıyoruz
+      @users = User.where("first_name ILIKE ? OR last_name ILIKE ? OR username ILIKE ?", query, query, query) 
+    else
+      @users = User.all
+    end
   end
 
   def show
