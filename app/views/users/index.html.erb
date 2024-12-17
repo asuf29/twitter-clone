@@ -1,4 +1,11 @@
-<div class="flex justify-center items-center w-full p-4 bg-gray-100">
+<div class="flex flex-col justify-center items-center w-full p-4 bg-gray-100">
+  <div class="mb-4 justify-center">
+    <%= form_with url: "/users", method: :get, class:"mb-4" do |form| %>
+    <%= form.label :query, "Search users:", class: "block text-gray-700 font-bold mb-2" %>
+    <%= form.search_field :query, class: "border border-gray-300 rounded-lg p-2" %>
+    <%= form.submit "Search", class: "bg-blue-500 text-white rounded-lg px-4 py-2" %>
+  <% end %>
+  </div>
   <ul class="flex flex-col justify-center gap-6 rounded-lg shadow-lg">
     <% @users.each do |user| %>
       <li class="flex items-center bg-gray-50 border border-gray-300 rounded-lg p-4 shadow-md">
