@@ -1,11 +1,18 @@
-<div class="flex justify-center items-center w-full min-h-screen bg-gray-100">
-  <ul class="flex flex-wrap justify-center gap-6 bg-white rounded-lg shadow-lg">
+<div class="flex justify-center items-center w-full p-4 bg-gray-100">
+  <ul class="flex flex-col justify-center gap-6 rounded-lg shadow-lg">
     <% @users.each do |user| %>
       <li class="flex items-center bg-gray-50 border border-gray-300 rounded-lg p-4 shadow-md w-80">
         <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
-          <%= image_tag "asuf.jpeg", class: "w-full h-full object-cover" %>
+          <% if user.profile_picture.attached? %>
+            <%= image_tag user.profile_picture %>
+          <% else %>
+            <p>No profile picture available.</p>
+          <% end %>
         </div>
-        <p class="text-lg font-bold text-gray-700"><%= user.username %></p>
+        <div class="flex flex-col">
+          <h2 class="text-xl font-bold text-gray-800"><%= "#{user.first_name} #{user.last_name}"%></h2>
+          <p class="text-sm text-gray-400"><%= user.username %></p>
+        </div>
       </li>
     <% end %>
   </ul>
