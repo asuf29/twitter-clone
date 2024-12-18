@@ -11,4 +11,20 @@ class Api::V1::UsersController < ApplicationController
 
     render json: users.select(:id, :username), status: :ok
   end
+
+  def show
+    user = User.find_by(id: params[:id])
+
+    if user
+      render json: {
+        id: user.id,
+        first_name: user.first_name,
+        last_name: user.last_name,
+        email: user.email,
+        username: user.username
+      }, status: :ok
+    else
+      render json: { error: "User not found" }, status: :not_found
+    end
+  end
 end
