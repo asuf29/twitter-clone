@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
   #bir kullanıcının birden fazla tweeti olabilir
   has_many :tweets
   #bir kulanıcının birden fazla yorumu olabilr
