@@ -5,8 +5,15 @@ Rails.application.routes.draw do
   resources :tweets do
     resources :comments, controller: "tweets/comments"
   end
+  
   resources :users do
     resources :tweets, controller: "users/tweets"
   end
 
+  namespace :api do
+    namespace :v1 do
+      resources :users
+      resources :tweets
+    end
+  end
 end
