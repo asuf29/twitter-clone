@@ -3,9 +3,12 @@ class Tweets::CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :update, :destroy]
   
   def create
-    comment = @tweet.comments.new(comment_params)
-    if comment.save 
-      redirect_to tweet_path(@tweet)
+    @comment = @tweet.comments.build(comment_params)
+    @comment.user = current_user
+    if @comment.save 
+      redirect_to tweet_path(@tweet), notice: "Comment added successfully."
+    else
+      redirect_to tweet_path(@tweet), alert: "Failed to add comment."
     end
   end
 
