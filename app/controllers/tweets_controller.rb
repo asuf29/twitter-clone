@@ -1,4 +1,5 @@
 class TweetsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
   #tweetleri listeler
   def index
@@ -14,9 +15,10 @@ class TweetsController < ApplicationController
   end
   #yeni tweet oluşturma işlemi
   def create
-    @tweet = Tweet.new(tweet_params)
+    @tweet = current_user.tweets.build(tweet_params)
+
     if @tweet.save
-      redirect_to root_path, notice: "Tweet başarıyla oluşturuldu."
+      redirect_to root_path, notice: "The tweet was created successfully."
     else
       render :new, status: :unprocessable_entity
     end
