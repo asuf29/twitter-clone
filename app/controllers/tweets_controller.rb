@@ -3,7 +3,7 @@ class TweetsController < ApplicationController
   before_action :authorize_user!, only: [:edit, :update, :destroy]
   #tweetleri listeler
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.all.order(created_at: :desc)
   end
   #tweet detay sayfası
   def show
