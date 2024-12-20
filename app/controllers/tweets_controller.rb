@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user!, only: [:edit, :update, :destroy]
   #tweetleri listeler
   def index
     @tweets = Tweet.all
@@ -47,5 +47,9 @@ class TweetsController < ApplicationController
   
   def set_tweet
     @tweet = Tweet.find(params[:id])
+  end
+
+  def authorize_user!
+    redirect_to tweets_path, alert: "You are not authorized to perform this action." unless @tweet.user == current_user
   end
 end
