@@ -7,16 +7,11 @@
       <% end %>
     </div>
 
-    <div>
-      <%= form.label :user, class: "block text-md text-blue-600" %>
-      <%= form.select :user_id, User.all.map { |user| [user.username, user.id] }, {}, class: "w-full border border-blue-600 rounded-xl p-2 w-full" %>
-    </div>
-
     <div class="mt-4 w-full">
       <%= form.label :body, class: "block text-md text-blue-600" %>
       <%= form.text_area :body, class: "w-full h-32 border border-blue-600 rounded-xl p-2" %>
     </div>
 
-    <%= form.submit "Save", class: "px-4 py-2 bg-blue-600 text-white text-md rounded-xl" %>
+    <%= form.submit "Tweetle", class: "px-4 py-2 bg-blue-600 text-white text-md rounded-xl mt-4" %>
   <% end %>
-</div> 
+</div>
