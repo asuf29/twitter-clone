@@ -1,10 +1,11 @@
 class Users::TweetsController < ApplicationController
   def create
-    @user = User.find(params[:user_id])
-    @tweet = @user.tweets.new(tweet_params)
+    @tweet = current_user.tweets.build(tweet_params)
 
     if @tweet.save
-      redirect_to user_path(@user)
+      redirect_to tweets_path, notice: "Tweet was successfully created."
+    else
+      render :new
     end
   end
 
