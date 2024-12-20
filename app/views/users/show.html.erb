@@ -13,7 +13,7 @@
         <% if @user.profile_picture.attached? %>
           <%= image_tag @user.profile_picture, class: "w-24 h-24 rounded-full object-cover mb-4" %>
         <% else %>
-          <p>No profile picture available.</p>
+          <%= image_tag("default-icon.svg", class: "w-24 h-24 rounded-full object-cover mb-4") %>
         <% end %>
         <h1 class="text-xl font-bold text-gray-800"><%= "#{@user.first_name} #{@user.last_name}"%></h1>
         <h1 class="text-sm text-gray-400"><%= @user.username %></h1>

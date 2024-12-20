@@ -6,7 +6,7 @@
           <% if tweet.user.profile_picture.attached? %>
             <%= image_tag tweet.user.profile_picture, class: "w-full h-full object-cover" %>
           <% else %>
-            <p class="text-xs text-center text-gray-500 mt-2">No profile picture</p>
+            <%= image_tag("default-icon.svg", class: "w-full h-full object-cover") %>
           <% end %>
         <% end %>
       </div>

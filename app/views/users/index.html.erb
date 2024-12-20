@@ -14,7 +14,7 @@
              <% if user.profile_picture.attached? %>
                 <%= image_tag user.profile_picture %>
               <% else %>
-                <p class="text-xs items-center text-center text-gray-500 mt-2">No profile picture available.</p>
+                <%= image_tag("default-icon.svg") %>
               <% end %>
           <% end %>
         </div>
