@@ -8,10 +8,11 @@
         { name: "User List", path: users_path, icon: "users-icon.svg" },
         { name: "Profile", path: root_path, icon: "profile-icon.svg" },
         { name: "More", path: root_path, icon: "more-icon.svg" },
+        { name: "Log Out", path: destroy_user_session_path, method: :delete, icon: "logout-icon.svg" },
     ] %>
     
     <% menu_items.each do |item| %>
-        <%= link_to item[:path], class: "flex items-center p-2 rounded-lg hover:bg-blue-100 transition duration-200 mb-2" do %>
+        <%= link_to item[:path], class: "flex items-center p-2 rounded-lg hover:bg-blue-100 transition duration-200 mb-2", data: {turbo_method: item[:method] || :get} do %>
             <%= image_tag item[:icon], class: "w-6 h-6" %>
             <p class="text-gray-800 text-md font-medium ml-3"><%= item[:name] %></p>
         <% end %>

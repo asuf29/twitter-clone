@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :comments, controller: "tweets/comments"
   end
   
-  resources :users do
+  resources :users, except: [:destroy] do
     resources :tweets, controller: "users/tweets"
   end
 
